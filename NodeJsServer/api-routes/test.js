@@ -3,6 +3,7 @@ const router = express.Router();
 const conn = require('../mongoConn');
 
 router.post('/', async (req, res) => {
+    console.log('Entro aca');
     const data = req.body;
     try{
         conn(async (collection) => {
