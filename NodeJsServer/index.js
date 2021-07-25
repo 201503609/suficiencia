@@ -1,0 +1,21 @@
+const express = require('express');
+const app = express();
+
+const PORT = 3000;
+const HOST = '0.0.0.0' || process.env.IP;
+
+const cors = require('cors');
+app.use(cors());
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
+app.get('/', async (req, res) => {
+    res.send('hola');
+});
+
+const testRouter = require('./api-routes/test');
+app.use('/test', testRouter);
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
