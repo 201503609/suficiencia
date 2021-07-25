@@ -27,5 +27,8 @@ app.use('/graphs', graphsRouter);
 const countryRouter = require('./api-routes/country');
 app.use('/country', countryRouter);
 
+const covidRouter = require('./api-routes/covid-vaccinated');
+app.use('/vaccinated', covidRouter);
+
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);

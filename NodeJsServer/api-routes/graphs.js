@@ -48,6 +48,7 @@ router.get('/location', async (req, res) => {
     }
 });
 
+// • Gráfica de pie de los géneros de los vacunados por país, en MongoDB.
 router.get('/general', async (req, res) => {
     const data = req.body;
     try {
