@@ -17,5 +17,9 @@ app.get('/', async (req, res) => {
 
 const testRouter = require('./api-routes/test');
 app.use('/test', testRouter);
+
+const dataRouter = require('./api-routes/stored-data');
+app.use('/data', dataRouter);
+
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
