@@ -9,7 +9,7 @@ function withDB(callback, collection = "users", database = "testdb",) {
         { useUnifiedTopology: true },
         (err, client) => {
             if (err) {
-                console.log(err);
+                console.log('Erro withDB ', err);
             }
             db = client.db(database);
             const coll = db.collection(collection);
