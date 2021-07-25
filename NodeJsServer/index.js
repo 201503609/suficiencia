@@ -24,5 +24,8 @@ app.use('/data', dataRouter);
 const graphsRouter = require('./api-routes/graphs');
 app.use('/graphs', graphsRouter);
 
+const countryRouter = require('./api-routes/country');
+app.use('/country', countryRouter);
+
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
