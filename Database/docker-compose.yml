@@ -1,20 +1,25 @@
 # referencia https://www.bmc.com/blogs/mongodb-docker-container/
-version: "3.8"
+version: "3"
 services:
     # servicio para la db de mongo en docker
-    mongodb:
-    image : mongo
-        container_name: mongodb
+    mongo:
+    image: 'mongo'
+        container_name: 'my-mongo-container'
         environment:
-            - PUID=1000
-            - PGID=1000
+            - MONGO_INITDB_DATABASE=mydb
+            - MONGO_NON_ROOT_USERNAME=
+            - MONGO_NON_ROOT_PASSWORD=
+            - MONGO_INITDB_ROOT_USERNAME=rootdev
+            - MONGO_INITDB_ROOT_PASSWORD=rootdev
+            #- PUID=1000
+            #- PGID=1000
         volumes:
             #- ./berriosdiego15/mongodb/database:/data/db
-            #- ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-            - ./data:/data/db
+            - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+            #- ./data:/data/db
         ports:
             - 27017-27019:27017-27019
-        restart: unless-stopped
+        #restart: unless-stopped
     # servicio para la db de redis en docker
     redis:
         image: 'redis'
