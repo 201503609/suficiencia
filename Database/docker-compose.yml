@@ -1,0 +1,21 @@
+# referencia https://www.bmc.com/blogs/mongodb-docker-container/
+version: "3.8"
+services:
+    # servicio para la db de mongo en docker
+    mongodb:
+    image : mongo
+        container_name: mongodb
+        environment:
+            - PUID=1000
+            - PGID=1000
+        volumes:
+            - /home/barry/mongodb/database:/data/db
+        ports:
+            - 27017-27019:27017-27019
+        restart: unless-stopped
+    # servicio para la db de redis en docker
+    redis:
+        image: 'redis'
+        container_name: 'my-redis-container'
+        ports:
+            - '6379:6379'
