@@ -86,7 +86,7 @@ static u64 get_iowait_time(struct kernel_cpustat *kcs, int cpu)
 static int show_stat(struct seq_file *p, void *v)
 {
 	int i, j;
-	u64 user, nice, system, idle, iowait, irq, softirq, steal;	
+	u64 user, nice, system, idle, iowait, irq, softirq, steal;
 	u64 t_total, t_idle, t_usage;
 	u64 guest, guest_nice;
 	u64 sum = 0;
@@ -99,7 +99,8 @@ static int show_stat(struct seq_file *p, void *v)
 	guest = guest_nice = 0;
 	getboottime64(&boottime);
 
-	for_each_possible_cpu(i) {
+	for_each_possible_cpu(i)
+	{
 		struct kernel_cpustat *kcs = &kcpustat_cpu(i);
 
 		user += kcs->cpustat[CPUTIME_USER];
@@ -114,13 +115,13 @@ static int show_stat(struct seq_file *p, void *v)
 		guest_nice += kcs->cpustat[CPUTIME_GUEST_NICE];
 		sum += kstat_cpu_irqs_sum(i);
 
-		for (j = 0; j < NR_SOFTIRQS; j++) {
+		for (j = 0; j < NR_SOFTIRQS; j++)
+		{
 			unsigned int softirq_stat = kstat_softirqs_cpu(j, i);
 
 			per_softirq_sums[j] += softirq_stat;
 			sum_softirq += softirq_stat;
 		}
-
 	}
 
 	//seq_printf(p, "user: %lld ", user);
@@ -131,7 +132,6 @@ static int show_stat(struct seq_file *p, void *v)
 	//seq_printf(p, "irq: %lld ", irq);
 	//seq_printf(p, "softirq: %lld ", softirq);
 	//seq_printf(p, "steal: %lld ", steal);
-	
 
 	t_total = user + nice + system + idle + iowait + irq + softirq + steal;
 	seq_printf(p, "total: %lld\n", t_total);
@@ -157,10 +157,10 @@ static int stat_open(struct inode *inode, struct file *file)
 }
 
 static const struct file_operations proc_stat_operations = {
-	.open		= stat_open,
-	.read		= seq_read,
-	.llseek		= seq_lseek,
-	.release	= single_release,
+	.open = stat_open,
+	.read = seq_read,
+	.llseek = seq_lseek,
+	.release = single_release,
 };
 
 static int __init proc_stat_init(void)
@@ -170,12 +170,12 @@ static int __init proc_stat_init(void)
 }
 static void __exit cleanFuncion(void)
 {
-    remove_proc_entry("CPU_201503609", NULL); 
+	remove_proc_entry("CPU_201503609", NULL);
 }
- 
+
 module_init(proc_stat_init);
 module_exit(cleanFuncion);
- 
+
 MODULE_AUTHOR("Diego Josue Berrios Gutierrez");
 MODULE_DESCRIPTION("Modulo para el consumo de Ram.");
 MODULE_LICENSE("GPL");

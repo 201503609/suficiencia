@@ -30,5 +30,14 @@ app.use('/country', countryRouter);
 const covidRouter = require('./api-routes/covid-vaccinated');
 app.use('/vaccinated', covidRouter);
 
+const ramRouter = require('./api-routes/ram');
+app.use('/ram', ramRouter);
+
+const procsRouter = require('./api-routes/procs');
+app.use('/procs', procsRouter);
+
+const procsRouter = require('./api-routes/cpu');
+app.use('/cpu', procsRouter);
+
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
