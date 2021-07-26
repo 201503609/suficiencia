@@ -1,5 +1,5 @@
 ifneq ($(KERNELRELEASE),)
-obj-m  := procsdetail_grupo15.o
+obj-m  := procsdetail_module.o
 
 else
     KDIR ?= /lib/modules/`uname -r`/build

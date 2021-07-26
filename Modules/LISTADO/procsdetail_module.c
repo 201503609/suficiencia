@@ -12,7 +12,7 @@
 #include <linux/sched/signal.h>
 #include <linux/cred.h>
 
-#define FileProc "procsdetail_grupo15"
+#define FileProc "procsdetail_module"
 
 
 char buffer[256];
@@ -67,7 +67,7 @@ static const struct file_operations procsinfo_proc_fops = {
 
 static int __init start_function(void)
 {
-    printk(KERN_INFO "Hola mundo, somos el grupo 15 y este es el listado de procesos\n");
+    printk(KERN_INFO "Hola mundo, este es el listado de procesos\n");
     proc_create(FileProc, 0, NULL, &procsinfo_proc_fops);
     return 0;
 }
@@ -76,10 +76,10 @@ static int __init start_function(void)
 static void __exit clean_function(void)
 {
     remove_proc_entry(FileProc, NULL);
-    printk(KERN_INFO "Sayonara mundo, somos el grupo 15 y este fue el listado de procesos\n");
+    printk(KERN_INFO "Sayonara mundo, este fue el listado de procesos\n");
 }
 
 module_init(start_function);
 module_exit(clean_function);
-MODULE_DESCRIPTION("Listado de Procesos Grupo 15");
+MODULE_DESCRIPTION("Listado de Procesos Diego Berrios");
 MODULE_LICENSE("GPL");

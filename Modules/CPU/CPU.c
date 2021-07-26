@@ -179,4 +179,3 @@ module_exit(cleanFuncion);
 MODULE_AUTHOR("Diego Josue Berrios Gutierrez");
 MODULE_DESCRIPTION("Modulo para el consumo de Ram.");
 MODULE_LICENSE("GPL");
-//http://systemadmin.es/2009/09/programacion-de-un-modulo-del-kernel-simple

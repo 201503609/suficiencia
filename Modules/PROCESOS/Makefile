@@ -1,6 +1,6 @@
 ifneq ($(KERNELRELEASE),)
 # kbuild part of makefile
-obj-m  := procsresume_grupo15.o
+obj-m  := procsresume_module.o
 
 else
 # normal makefile

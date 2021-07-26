@@ -6,7 +6,7 @@
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
 
-#define nombreArchivo "ram_grupo15"
+#define nombreArchivo "ram_module"
 struct sysinfo i;   //stuct que contiene la informacion de la ram
 
 static int mostrarDatos(struct seq_file *f, void *v){
@@ -30,20 +30,20 @@ static const struct file_operations informacion = {
 
 static int __init initFuncion(void)
 {
-    printk(KERN_INFO "Hola mundo, somos el grupo 15 y este es el monitor de memoria");
+    printk(KERN_INFO "Hola mundo, este es el monitor de memoria");
     proc_create(nombreArchivo, 0, NULL, &informacion);
     return 0;
 }
 
 static void __exit cleanFuncion(void)
 {
-    printk(KERN_INFO "Sayonara mundo, somos el grupo 15 y este fue el monitor de memoria");
+    printk(KERN_INFO "Sayonara mundo, este fue el monitor de memoria");
     remove_proc_entry(nombreArchivo, NULL); 
 }
  
 module_init(initFuncion);
 module_exit(cleanFuncion);
  
-MODULE_AUTHOR("Grupo 15");
+MODULE_AUTHOR("Diego Berrios");
 MODULE_DESCRIPTION("Modulo para el consumo de Ram.");
 MODULE_LICENSE("GPL");

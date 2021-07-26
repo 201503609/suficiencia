@@ -1,4 +1,4 @@
-obj-m += ram_grupo15.o
+obj-m += ram_module.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(shell pwd) modules
