@@ -6,7 +6,7 @@
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
 
-#define nombreArchivo "ram"
+#define nombreArchivo "rammodule"
 struct sysinfo i;   //stuct que contiene la informacion de la ram
 
 static int mostrarDatos(struct seq_file *f, void *v){
