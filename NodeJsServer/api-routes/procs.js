@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
                 return;
             }
             //res.status(200).json(JSON.parse(data));
-            res.status(200).json(data.body);
+            res.status(200).json(data);
         });
     } catch (err) {
         console.log(err);

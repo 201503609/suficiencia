@@ -9,17 +9,20 @@ router.get('/', async (req, res) => {
                 console.log(err);
                 return;
             }
-            console.log('ESTO ', data);
             const dataArray = data.split('\n');
-            console.log('ESTO 2 ', dataArray);
             console.log('ESTO + ', dataArray[0]);
             console.log('ESTO ++ ', dataArray[1]);
-            const total = parseInt(dataArray[0]).toString();
-            const usage = parseInt(dataArray[1]).toString();
+            
+            const arrayTotal = dataArray[0].split(':');
+            const usageTotal = dataArray[1].split(':');
+
+            const total = parseInt(arrayTotal[1].trim());
+            const usage = parseInt(usageTotal[1].trim());
+
 
             res.status(200).json({
                 total,
-                usage,
+                usage
             });
         });
     } catch (err) {
