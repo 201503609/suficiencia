@@ -1,49 +1,66 @@
 #include <linux/module.h>
-#include <linux/kernel.h>
 #include <linux/init.h>
-#include <linux/mm.h>
-#include <linux/fs.h>
 #include <linux/proc_fs.h>
+#include <linux/sched.h>
+#include <linux/uaccess.h>
+#include <linux/fs.h>
+#include <linux/sysinfo.h>
 #include <linux/seq_file.h>
+#include <linux/slab.h>
+#include <linux/mm.h>
+#include <linux/swap.h>
+#include <linux/timekeeping.h>
+#include <linux/kernel.h>
+#ifdef CONFIG_CMA
+#include <linux/cma.h>
+#endif
 
-#define nombreArchivo "rammodule"
-struct sysinfo i;   //stuct que contiene la informacion de la ram
 
-static int mostrarDatos(struct seq_file *f, void *v){
-    si_meminfo(&i); 
-    seq_printf(f,"%ld;%ld", (i.totalram), (i.freeram));
+static int my_proc_show(struct seq_file *m, void *v){
+ 	struct sysinfo i;
+    si_meminfo(&i);
+    long ramLibre = i.freeram;
+    long ramTotal = i.totalram;
+    long porcentajeLibre = (ramLibre * 100) / ramTotal;
+    seq_printf(m, "%ld,%ld,%ld", ramTotal, ramLibre, porcentajeLibre);
     return 0;
 }
 
-static int info_proc_open(struct inode *inode, struct file *file){
-    return single_open(file, mostrarDatos, NULL);
+static ssize_t my_proc_write(struct file* file, const char __user *buffer, size_t count, loff_t *f_pos){
+    return 0;
 }
 
-static const struct file_operations informacion = {
-    .owner = THIS_MODULE,
-    .open = info_proc_open,
-    .read = seq_read,
-    .llseek = seq_lseek,
-    .release = single_release,
+static int my_proc_open(struct inode *inode, struct file *file){
+        return single_open(file, my_proc_show, NULL);
+}
+
+static struct file_operations my_fops={
+        .owner = THIS_MODULE,
+        .open = my_proc_open,
+        .release = single_release,
+        .read = seq_read,
+        .llseek = seq_lseek,
+        .write = my_proc_write
 };
 
-
-static int __init initFuncion(void)
-{
-    printk(KERN_INFO "Hola mundo, este es el monitor de memoria");
-    proc_create(nombreArchivo, 0, NULL, &informacion);
-    return 0;
+static int __init test_init(void){
+        struct proc_dir_entry *entry;
+        entry = proc_create("ram-module", 0777, NULL, &my_fops);
+        if(!entry) {
+                return -1;
+        } else {
+                printk(KERN_INFO "Inicio\n");
+        }
+        return 0;
 }
 
-static void __exit cleanFuncion(void)
-{
-    printk(KERN_INFO "Sayonara mundo, este fue el monitor de memoria");
-    remove_proc_entry(nombreArchivo, NULL); 
+static void __exit test_exit(void){
+        remove_proc_entry("ram-module",NULL);
+        printk(KERN_INFO "Final\n");
 }
- 
-module_init(initFuncion);
-module_exit(cleanFuncion);
- 
-MODULE_AUTHOR("Diego Berrios");
-MODULE_DESCRIPTION("Modulo para el consumo de Ram.");
+
+
+
+module_init(test_init);
+module_exit(test_exit);
 MODULE_LICENSE("GPL");
