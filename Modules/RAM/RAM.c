@@ -6,13 +6,12 @@
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
 
-#define nombreArchivo "RAM_201503609"
+#define nombreArchivo "ram"
 struct sysinfo i;   //stuct que contiene la informacion de la ram
 
 static int mostrarDatos(struct seq_file *f, void *v){
     si_meminfo(&i); 
-    seq_printf(f,"Total:%8lu\n", (i.totalram));
-    seq_printf(f,"Libre:%8lu\n", (i.freeram));
+    seq_printf(f,"%ld;%ld", (i.totalram), (i.freeram));
     return 0;
 }
 
@@ -31,18 +30,20 @@ static const struct file_operations informacion = {
 
 static int __init initFuncion(void)
 {
+    printk(KERN_INFO "Hola mundo, este es el monitor de memoria");
     proc_create(nombreArchivo, 0, NULL, &informacion);
     return 0;
 }
 
 static void __exit cleanFuncion(void)
 {
+    printk(KERN_INFO "Sayonara mundo, este fue el monitor de memoria");
     remove_proc_entry(nombreArchivo, NULL); 
 }
  
 module_init(initFuncion);
 module_exit(cleanFuncion);
  
-MODULE_AUTHOR("Diego Josue Berrios Gutierrez");
+MODULE_AUTHOR("Diego Berrios");
 MODULE_DESCRIPTION("Modulo para el consumo de Ram.");
 MODULE_LICENSE("GPL");
