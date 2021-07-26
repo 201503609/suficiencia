@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const conn = require('../conn');
+const conn = require('../mongoConn');
 
 router.get('/test', async (req, res) => {
     const data = req.body;
