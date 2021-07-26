@@ -4,7 +4,7 @@ const fs = require('fs');
 
 router.get('/', async (req, res) => {
     try {
-        fs.readFile('/elements/procs/procsdetail_module.txt', 'utf8', (err, data) => {
+        fs.readFile('/procs/procsdetail_module.txt', 'utf8', (err, data) => {
             if (err) {
                 console.log(err);
                 return;
