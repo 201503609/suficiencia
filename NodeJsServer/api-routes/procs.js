@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
                 console.log(err);
                 return;
             }
-            console.log('--- ', data);
             data = data.replace('\n', '');
             console.log('--- 2 ', data);
             //res.status(200).json(JSON.parse(data));

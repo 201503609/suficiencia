@@ -43,14 +43,14 @@ static int pstree(struct seq_file *m, void *v)
     seq_printf(m, "{\nbody:[");
     for_each_process(task_list)
     {
-        seq_printf(m, "{\n");
-        seq_printf(m, "\"proceso\": \"%s\",\n\"pid\": \"%d\",\n\"uid\":\"%d\",\n\"estado\":\"%s\"\n", task_list->comm, task_list->pid, task_list->cred->uid.val, get_task_state(task_list->state));
+        seq_printf(m, "{");
+        seq_printf(m, "\"proceso\": \"%s\",\"pid\": \"%d\",\"uid\":\"%d\",\"estado\":\"%s\"", task_list->comm, task_list->pid, task_list->cred->uid.val, get_task_state(task_list->state));
         seq_printf(m, "},");
     }
-    seq_printf(m, "{\n");
-    seq_printf(m, "\"proceso\": \"FIN\",\n\"pid\": \"FIN\",\n\"uid\":\"FIN\",\n\"estado\":\"FIN\"\n");
+    seq_printf(m, "{");
+    seq_printf(m, "\"proceso\": \"FIN\",\"pid\": \"FIN\",\"uid\":\"FIN\",\"estado\":\"FIN\"");
     seq_printf(m, "}");
-    seq_printf(m, "]\n}");
+    seq_printf(m, "]}");
     return 0;
 }
 
