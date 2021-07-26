@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
                 console.log(err);
                 return;
             }
+            console.log('ESTO ', data);
             const dataArray = data.split('\n');
             const total = parseInt(dataArray[0]);
             const usage = parseInt(dataArray[1]);
