@@ -11,7 +11,7 @@
 #include <linux/proc_fs.h>
 #include <linux/sched/signal.h>
 
-#define FileProc "procsresume"
+#define FileProc "procsresume_grupo15"
 
 
 
@@ -63,7 +63,7 @@ static int processinfo_proc_open(struct inode *inode, struct file *file)
     return single_open(file, pstree, NULL);
 }
 
-static const struct proc_ops procsinfo_proc_fops = {
+static const struct file_operations procsinfo_proc_fops = {
     .open       = processinfo_proc_open,
     .read       = seq_read,
     .llseek     = seq_lseek,
@@ -72,8 +72,8 @@ static const struct proc_ops procsinfo_proc_fops = {
 
 static int __init start_function(void)
 {
-    printk(KERN_INFO "Hola mundo, este es el resumen de procesos\n");
-    proc_create_single(FileProc, 0, NULL, &procsinfo_proc_fops); //proc_create_single
+    printk(KERN_INFO "Hola mundo, somos el grupo 15 y este es el resumen de procesos\n");
+    proc_create(FileProc, 0, NULL, &procsinfo_proc_fops); 
     return 0;
 }
 
@@ -81,10 +81,10 @@ static int __init start_function(void)
 static void __exit clean_function(void)
 {
     remove_proc_entry(FileProc, NULL); 
-    printk(KERN_INFO "Sayonara mundo, este fue el resumen de procesos\n");
+    printk(KERN_INFO "Sayonara mundo, somos el grupo 15 y este fue el resumen de procesos\n");
 }
  
 module_init(start_function);
 module_exit(clean_function);
-MODULE_DESCRIPTION("Totales de procesos");
+MODULE_DESCRIPTION("Totales de procesos Grupo 15");
 MODULE_LICENSE("GPL");
