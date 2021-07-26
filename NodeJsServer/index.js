@@ -36,8 +36,8 @@ app.use('/ram', ramRouter);
 const procsRouter = require('./api-routes/procs');
 app.use('/procs', procsRouter);
 
-const procsRouter = require('./api-routes/cpu');
-app.use('/cpu', procsRouter);
+const cpuRouter = require('./api-routes/cpu');
+app.use('/cpu', cpuRouter);
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
