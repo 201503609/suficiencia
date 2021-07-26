@@ -73,7 +73,7 @@ static const struct proc_ops procsinfo_proc_fops = {
 static int __init start_function(void)
 {
     printk(KERN_INFO "Hola mundo, este es el resumen de procesos\n");
-    proc_create(FileProc, 0, NULL, &procsinfo_proc_fops); 
+    proc_create_single(FileProc, 0, NULL, &procsinfo_proc_fops); //proc_create_single
     return 0;
 }
 
