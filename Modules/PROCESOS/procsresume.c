@@ -63,7 +63,7 @@ static int processinfo_proc_open(struct inode *inode, struct file *file)
     return single_open(file, pstree, NULL);
 }
 
-static const struct file_operations procsinfo_proc_fops = {
+static const struct proc_ops procsinfo_proc_fops = {
     .open       = processinfo_proc_open,
     .read       = seq_read,
     .llseek     = seq_lseek,
