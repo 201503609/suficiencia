@@ -22,10 +22,6 @@ router.post('/newCase', async (req, res) => {
         //將一個或多個值value插入到列表key的表尾。
         multi.rpush('testlist', 'dato');
 
-        multi.exec(function (err, response) {
-            if (err) throw err;
-
-        });
     } catch (err) {
         console.log(err);
         res.status(500).json({ 'message': 'failed' })
