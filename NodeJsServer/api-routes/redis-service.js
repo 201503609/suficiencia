@@ -52,9 +52,12 @@ router.get('/allVals', async (req, res) => {
                 /// processItem(item)
                 totalVals += item;
             });
-            res.status(200).json({'message': totalVals});            
-        }); 
-        
+            var arrRet = totalVals;
+            console.log('arrRet ', arrRet);
+
+            res.status(200).json({ 'message': totalVals });
+        });
+
 
     } catch (err) {
         console.log(err);
