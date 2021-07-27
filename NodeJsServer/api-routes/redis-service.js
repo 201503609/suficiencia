@@ -51,12 +51,11 @@ router.get('/allVals', async (req, res) => {
             items.forEach(function (item) {
                 /// processItem(item)
                 totalVals += item;
-                console.log('val: ', item);
             });
             console.log('todo: ', totalVals);
-            
+            res.status(200).json({'message': totalVals});            
         }); 
-        res.status(200).json({'message': totalVals});
+        
 
     } catch (err) {
         console.log(err);
