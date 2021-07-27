@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 app.get('/', async (req, res) => {
-    res.send('hola');
+    res.json({'message':'hola'});
 });
 
 const testRouter = require('./api-routes/test');
