@@ -18,7 +18,7 @@ router.get('/gender', async (req, res) => {
                 .toArray((err, result) => {
                     res.json(result);
                 });
-        });
+        }, "test");
     } catch (err) {
         console.log(err);
         res.status(500).json({ 'message': 'failed' });
@@ -89,7 +89,7 @@ router.get('/general', async (req, res) => {
                         res.json(result);
                     }
                 );
-        });
+        }, "test");
     } catch (err) {
         console.log(err);
         res.status(500).json({ 'message': 'failed' });
