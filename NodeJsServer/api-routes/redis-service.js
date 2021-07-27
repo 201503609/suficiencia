@@ -16,10 +16,14 @@ redisCliente.on('error ', function (err) {
 
 router.get('/', async (req, res) => {
     try {
+        console.log("working with redis collection");
+
         redisCliente.on('connect ', function () {
             console.log('Redis client connected ');
         });
-        res.send('hola');
+
+        res.status(200).json('hola');
+        
     } catch (err) {
         console.log(err);
         res.status(500).json({ 'message': 'failed' });
