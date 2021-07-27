@@ -16,6 +16,9 @@ redisCliente.on('error ', function (err) {
 
 router.get('/', async (req, res) => {
     try {
+        redisCliente.on('connect ', function () {
+            console.log('Redis client connected ');
+        });
         res.send('hola');
     } catch (err) {
         console.log(err);
