@@ -18,9 +18,7 @@ client.on('error ', function (err) {
 router.post('/newCase', async (req, res) => {
     const data = req.body;
     try {
-        //將一個或多個值value插入到列表key的表尾。
-        multi.rpush('testlist', data);
-
+        multi.rpush('testlist', JSON.stringify(data));
         multi.exec(function (err, response) {
             if (err) throw err;
             res.json(response);
