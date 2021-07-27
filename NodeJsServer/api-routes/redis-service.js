@@ -52,8 +52,7 @@ router.get('/allVals', async (req, res) => {
                 /// processItem(item)
                 totalVals += item;
             });
-            console.log('todo: ', totalVals);
-            res.status(200).json({'message': totalVals});            
+            res.status(200).json(JSON.parse(totalVals));            
         }); 
         
 
