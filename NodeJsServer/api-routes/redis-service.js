@@ -4,23 +4,21 @@ const router = express.Router();
 const fs = require('fs');
 
 var redis = require('redis');
-var redisCliente = redis.createClient(); // esto crea un nuevo cliente
+var client = redis.createClient(); // esto crea un nuevo cliente
 
-redisCliente.on('connect ', function () {
+client.on('connect ', function () {
     console.log('Redis client connected ');
 });
 
-redisCliente.on('error ', function (err) {
+client.on('error ', function (err) {
     console.log('Algo salio mal ' + err);
 });
 
 router.get('/', async (req, res) => {
     try {
         console.log("working with redis collection");
-
-        redisCliente.on('connect ', function () {
-            console.log('Redis client connected ');
-        });
+        client.set("key:3", "value3new");
+        console.log("working with redis +++++++", client.get("key:3"));
 
         res.status(200).json('hola');
         
