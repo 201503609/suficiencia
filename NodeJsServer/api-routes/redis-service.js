@@ -42,18 +42,18 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/vals', async (req, res) => {
+router.get('/allVals', async (req, res) => {
     try {
+        var totalVals = '';
         client.lrange('testlist', 0, -1, function (error, items) {
-            if (error) throw error
+            if (error) throw error;
 
             items.forEach(function (item) {
                 /// processItem(item)
-                console.log('item ', item);
-            })
-            console.log('===');
-        })
-        res.status(200).json('hola');
+                totalVals += item;
+            });
+        });
+        res.status(200).json(JSON.parse(totalVals));
 
     } catch (err) {
         console.log(err);
