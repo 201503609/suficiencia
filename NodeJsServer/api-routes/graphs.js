@@ -58,8 +58,8 @@ router.get('/general', async (req, res) => {
     const data = req.body;
     try {
         conn(async (collection) => {
-            collection.
-                aggregate([
+            const result = await collection.aggregate(
+                [
                     {
                         $group: {
                             _id: {
@@ -81,11 +81,14 @@ router.get('/general', async (req, res) => {
                             total: { $sum: "$genderCount" }
                         }
                     }
-                ])
-                .toArray((err, result) => {
-                    if (err) throw err;
-                    res.json(result);
-                });
+                ]).toArray(
+                    (err, result) => {
+                        if (err) {
+                            res.status(500).json({ 'message': 'failed' })
+                        }
+                        res.json(result);
+                    }
+                );
         });
     } catch (err) {
         console.log(err);
