@@ -12,21 +12,6 @@ router.get('/test', async (req, res) => {
     }
 });
 
-router.post('/newCase', async (req, res) => {
-    const data = req.body;
-    try {
-        conn(async (collection) => {
-            data.region = GetRegion(data.location);
-            data.fecha = new Date();
-            const result = await collection.insertOne(data);
-            res.json(result);
-        }, "test");
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ 'message': 'failed' })
-    }
-});
-
 /*
 {
     "name": "Pablo Mendoza"
@@ -65,7 +50,7 @@ router.get('/topTenVaccinated', async (req, res) => {
                 ]
             ).sort({
                 "fecha": -1
-            }).limit(5).toArray(
+            }).limit(10).toArray(
                 (err, result) => {
                     if (err) {
                         res.status(500).json({ 'message': 'failed' })

@@ -29,19 +29,24 @@ router.get('/location', async (req, res) => {
     const data = req.body;
     try {
         conn(async (collection) => {
-            collection.
-                aggregate([
+            const result = await collection.aggregate(
+                [
                     {
                         $group: {
                             _id: "$location",
                             count: { $sum: 1 }
                         }
                     }
-                ])
-                .toArray((err, result) => {
+                ]
+            ).toArray(
+                (err, result) => {
+                    if (err) {
+                        res.status(500).json({ 'message': 'failed' })
+                    }
                     res.json(result);
-                });
-        });
+                }
+            );
+        }, "test");
     } catch (err) {
         console.log(err);
         res.status(500).json({ 'message': 'failed' });
