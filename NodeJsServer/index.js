@@ -39,8 +39,8 @@ app.use('/procs', procsRouter);
 const cpuRouter = require('./api-routes/cpu');
 app.use('/cpu', cpuRouter);
 
-const cpuRouter = require('./api-routes/redis-service');
-app.use('/redis', cpuRouter);
+const redisRouter = require('./api-routes/redis-service');
+app.use('/redis', redisRouter);
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
