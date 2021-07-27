@@ -18,10 +18,10 @@ router.get('/', async (req, res) => {
     try {
         console.log("working with redis collection");
         client.set("key:3", "value3new");
-        console.log("working with redis +++++++", client.get("key:3"));
+        console.log("working with redis +++++++", client.get("key:3", redis.print));
 
         res.status(200).json('hola');
-        
+
     } catch (err) {
         console.log(err);
         res.status(500).json({ 'message': 'failed' });
