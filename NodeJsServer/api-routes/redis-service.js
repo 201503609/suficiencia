@@ -53,7 +53,7 @@ router.get('/allVals', async (req, res) => {
                 totalVals += item;
             });
         });
-        res.status(200).json(JSON.parse(totalVals));
+        res.status(200).json({'message': totalVals});
 
     } catch (err) {
         console.log(err);
