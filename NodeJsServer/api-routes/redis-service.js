@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
-var redis = require('redis ');
+var redis = require('redis');
 var redisCliente = redis.createClient(); // esto crea un nuevo cliente
 
 redisCliente.on('connect ', function () {
