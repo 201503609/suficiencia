@@ -53,7 +53,9 @@ router.get('/allVals', async (req, res) => {
                 totalVals += item;
             });
             var arrRet = totalVals;
-            console.log('arrRet ', arrRet);
+            arrRet = arrRet.replace('\\', '');
+
+            console.log('arrRet ', JSON.parse(arrRet));
 
             res.status(200).json({ 'message': totalVals });
         });
