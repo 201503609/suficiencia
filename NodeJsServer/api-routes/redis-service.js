@@ -44,17 +44,17 @@ router.get('/', async (req, res) => {
 
 router.get('/allVals', async (req, res) => {
     try {
-        var totalVals = '';
+        var totalVals = '[';
         client.lrange('testlist', 0, -1, function (error, items) {
             if (error) throw error;
 
             items.forEach(function (item) {
                 /// processItem(item)
-                totalVals += item;
+                totalVals += item + ',';
             });
-            var arrRet = totalVals;
-            arrRet = arrRet.replace('\\', '');
-            res.status(200).json({ 'message': arrRet });
+            totalVals = totalVals.substring(0, totalVals.length - 1);
+            totalVals += ']';
+            res.status(200).json({ 'message': totalVals });
         });
 
 
