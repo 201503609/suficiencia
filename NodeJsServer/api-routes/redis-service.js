@@ -18,10 +18,13 @@ client.on('error ', function (err) {
 router.post('/newCase', async (req, res) => {
     const data = req.body;
     try {
-        console.log('data ', data);
         //將一個或多個值value插入到列表key的表尾。
-        // multi.rpush('testlist', 'dato');
+        multi.rpush('testlist', data);
 
+        multi.exec(function (err, response) {
+            if (err) throw err;
+            res.json(response);
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json({ 'message': 'failed' })
