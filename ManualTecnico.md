@@ -150,14 +150,14 @@ Correr comandos docker sin necesidad de SUDO
 
 '/ram'
    - PETICION: get
-   - URL: /topTenVaccinated
+   - URL: /
    - CUERPO: nada
    - RESP: totalRam, freeRam, usedRam, percentFree
    - linux kernel
 
 '/procs'
    - PETICION: get
-   - URL: /topTenVaccinated
+   - URL: /
    - CUERPO: nada
    - RESP: listado de procediminetos
    - linux kernel
@@ -165,7 +165,7 @@ Correr comandos docker sin necesidad de SUDO
 
 '/cpu'
    - PETICION: get
-   - URL: /topTenVaccinated
+   - URL: /
    - CUERPO: nada
    - RESP: tiempo total de uso, tiempo de uso sin idle
    - linux kernel

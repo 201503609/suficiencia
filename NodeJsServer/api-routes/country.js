@@ -17,7 +17,8 @@ router.get('/', async (req, res) => {
                 res.send(result.map(function (r) {
                     return {
                         '_id': r._id,
-                        'names': r.names.splice(0, 5)
+                        //'names': r.names.splice(0, 5)
+                        'names': r.names
                     }
                 }));
             });
