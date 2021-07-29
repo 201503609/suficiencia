@@ -1,0 +1,5 @@
+https://canvasjs.com/javascript-charts/
+https://bitbucket.org/jcabelloc-itana/itana-demos/src/master/cloudrun-demo/
+https://semaphoreci.com/blog/google-cloud-run-cicd-first-look
+https://medium.com/google-cloud/google-cloud-run-or-how-to-run-your-static-website-in-5-minutes-and-much-more-dbe8f2804395
+https://cloud.google.com/community/tutorials/deploy-react-nginx-cloud-run
