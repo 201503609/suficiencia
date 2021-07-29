@@ -96,5 +96,34 @@ router.get('/general', async (req, res) => {
     }
 });
 
+router.get('/genderByCountry', async (req, res) => {
+    const data = req.body;
+    try {
+        conn(async (collection) => {
+            const result = await collection.aggregate(
+                [
+                    {
+                        $group: {
+                            _id: {
+                                location: "$location",
+                                gender: "$gender"
+                            },
+                            genderCount: { $sum: 1 }
+                        }
+                    },
+                ]).toArray(
+                    (err, result) => {
+                        if (err) {
+                            res.status(500).json({ 'message': 'failed' })
+                        }
+                        res.json(result);
+                    }
+                );
+        }, "test");
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ 'message': 'failed' });
+    }
+});
 
 module.exports = router;
