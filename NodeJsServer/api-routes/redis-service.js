@@ -44,7 +44,7 @@ router.get('/', async (req, res) => {
 
 router.get('/allVals', async (req, res) => {
     try {
-        var totalVals = '[';
+        var totalVals = '\"body\": [';
         client.lrange('redisList', 0, -1, function (error, items) {
             if (error) throw error;
 
