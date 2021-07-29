@@ -18,7 +18,7 @@ client.on('error ', function (err) {
 router.post('/newCase', async (req, res) => {
     const data = req.body;
     try {
-        multi.rpush('testlist', JSON.stringify(data));
+        multi.rpush('redisList', JSON.stringify(data));
         multi.exec(function (err, response) {
             if (err) throw err;
             res.json(response);
@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
 router.get('/allVals', async (req, res) => {
     try {
         var totalVals = '[';
-        client.lrange('testlist', 0, -1, function (error, items) {
+        client.lrange('redisList', 0, -1, function (error, items) {
             if (error) throw error;
 
             items.forEach(function (item) {
