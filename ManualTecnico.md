@@ -41,7 +41,7 @@ El presente documento detalla los elementos basicos de proyecto de suficiencia, 
 
 ```
 
-Conexión a MongoDB: mongodb://rootdev:rootdev@34.134.212.13:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
+Conexión a MongoDB: mongodb://rootdev:rootdev@34.67.40.100:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
 
 
 Comando para levantar el contenido de los archivos docker-compose.yml:

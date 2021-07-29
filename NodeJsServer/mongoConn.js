@@ -1,5 +1,5 @@
 const mongodb = require('mongodb');
-const DB_STR_CON = 'mongodb://rootdev:rootdev@34.134.212.13:27017'
+const DB_STR_CON = 'mongodb://rootdev:rootdev@34.67.40.100:27017'
 
 let db = undefined;
 
