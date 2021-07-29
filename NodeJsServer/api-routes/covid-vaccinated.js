@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const conn = require('../mongoConn');
 
+var redis = require('redis');
+var client = redis.createClient(); // esto crea un nuevo cliente
+var multi = client.multi();
+
 router.get('/test', async (req, res) => {
     const data = req.body;
     try {
@@ -29,6 +33,13 @@ router.post('/newVaccinated', async (req, res) => {
             const result = await collection.insertOne(data);
             res.json(result);
         }, "test");
+
+        multi.rpush('redisList', JSON.stringify(data));
+        multi.exec(function (err, response) {
+            if (err) throw err;
+            res.json(response);
+        });
+
     } catch (err) {
         console.log(err);
         res.status(500).json({ 'message': 'failed' })
