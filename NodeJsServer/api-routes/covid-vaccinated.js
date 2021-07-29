@@ -31,7 +31,7 @@ router.post('/newVaccinated', async (req, res) => {
         conn(async (collection) => {
             data.fecha = new Date();
             const result = await collection.insertOne(data);
-            res.json(result);
+            //res.json(result);    
         }, "test");
 
         multi.rpush('redisList', JSON.stringify(data));
