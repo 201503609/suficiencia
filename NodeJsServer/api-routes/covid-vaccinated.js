@@ -60,7 +60,7 @@ router.get('/topTenVaccinated', async (req, res) => {
                     }
                 ]
             ).sort({
-                "fecha": -1
+                count : -1
             }).limit(10).toArray(
                 (err, result) => {
                     if (err) {
