@@ -105,8 +105,7 @@ router.get('/genderByCountry', async (req, res) => {
                     {
                         $group: {
                             _id: {
-                                location: "$location",
-                                gender: "$gender"
+                                location: "$location" + "$gender"
                             },
                             genderCount: { $sum: 1 }
                         }
