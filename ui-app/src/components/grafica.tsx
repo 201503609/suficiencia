@@ -8,6 +8,13 @@ const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 var totalCpu: any;
 var usageCpu: any;
 
+var ram: any = {
+  totalRam: '',
+  freeRam: '',
+  percent: '',
+  usedRam: ''
+}
+
 const Grafica = () => {
 
   const [dataRam, setDataRam] = useState([
@@ -51,6 +58,12 @@ const Grafica = () => {
         { y: resp.data.freeRam * 0.0001, label: "FREE" },
         { y: resp.data.usedRam * 0.0001, label: "USED" }
       ];
+
+      ram.totalRam = resp.data.totalRam;
+      ram.freeRam = resp.data.freeRam;
+      ram.percent = resp.data.percent;
+      ram.usedRam = resp.data.usedRam;
+
       let temRam = dataRamm;
       if (temRam.length < 8)
         temRam.push({ x: new Date(), y: resp.data.freeRam * 0.0001, label: "" });
@@ -120,6 +133,23 @@ const Grafica = () => {
   return (
     <>
       <h1>SYSTEM MONITOR</h1>
+
+
+      <h2>DATOS RAM</h2>
+      <div className="row" style={{ backgroundColor: "#C0504E", color: "white" }}>
+        <div className="col-3">Total Ram</div>
+        <div className="col-3">Used Ram</div>
+        <div className="col-3">Free Ram</div>
+        <div className="col-3">Percent</div>
+      </div>
+      <div className="row" style={{ backgroundColor: "#C050EE", color: "white" }}>
+        <div className="col-3">{ram.totalRam}</div>
+        <div className="col-3">{ram.usedRam}</div>
+        <div className="col-3">{ram.freeRam}</div>
+        <div className="col-3">{ram.percent}</div>
+      </div>
+
+
       <div className="row">
         <div className="col-9"><CanvasJSChart options={options2} /></div>
         <div className="col-3"><CanvasJSChart options={options} /></div>
@@ -131,7 +161,7 @@ const Grafica = () => {
         <div className="col-5">Total</div>
         <div className="col-5">Usage</div>
       </div>
-      <div className="row" style={{ backgroundColor: "#C050EE", color: "white" }}>
+      <div className="row" style={{ backgroundColor: 'blueviolet', color: "white" }}>
         <div className="col-5">{totalCpu}</div>
         <div className="col-5">{usageCpu}</div>
       </div>
