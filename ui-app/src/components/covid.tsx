@@ -392,6 +392,8 @@ const Covid = () => {
 
   return (
     <>
+
+      {/*
       <h1>Tabla de datos recopilados</h1>
       <div className="form-row">
         <div className="col">
@@ -427,7 +429,7 @@ const Covid = () => {
           {renderTableTraffic()}
         </tbody>
       </table>
-
+    */}
       <h1>Datos MongoDb</h1>
       <table className="table table-hover">
         <tbody>
