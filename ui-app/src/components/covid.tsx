@@ -117,9 +117,8 @@ const Covid = () => {
   // ++++++ REDIS
   const getTopVac = async () => {
     try {
-      const resp = await axios.get(
-        "http://34.67.40.100:3000/vaccinated/topTenVaccinated"
-      );
+      const resp = await axios.get("https://us-central1-fine-byway-320501.cloudfunctions.net/function-3");
+      //"http://34.67.40.100:3000/vaccinated/topTenVaccinated"
       setregionTopVac(resp.data);
     } catch (err) {
       console.error(err);
@@ -157,7 +156,7 @@ const Covid = () => {
   // ++++++ REDIS
   const getRange = async () => {
     try {
-      const resp = await axios.get("http://34.67.40.100:3000/data/last");
+      const resp = await axios.get("http://us-central1-fine-byway-320501.cloudfunctions.net/function-2");
       let casoAge = resp.data;
 
       setageRange(getAge(casoAge));
