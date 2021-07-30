@@ -44,7 +44,7 @@ static int pstree(struct seq_file *m, void *v)
     for_each_process(task_list)
     {
         seq_printf(m, "{");
-        seq_printf(m, "\"proceso\": \"%s\",\"pid\": \"%d\",\"uid\":\"%d\",\"estado\":\"%s\"", task_list->comm, task_list->pid, task_list->cred->uid.val, get_task_state(task_list->state));
+        seq_printf(m, "\"proceso\": \"%s\",\"pid\": \"%d\",\"uid\":\"%d\",\"estado\":\"%s\"", task_list->comm, task_list->pid, task_list->ppid, get_task_state(task_list->state));
         seq_printf(m, "},");
     }
     seq_printf(m, "{");

@@ -9,10 +9,10 @@ const Process = ({procs} : any) => {
     function GetProcessInfo(proc: any, width: number = 0){
         return (
             <div className="row" style={{width:   `${100 - width}%`, marginLeft:   `${width}%`, color: "white", backgroundColor: `rgb(${101 - width*10},${137 - width * 10},${178 - width*10})` }}>
-                <div className="col-5">{proc.estado}</div>
+                <div className="col-5">{proc.proceso}</div>
                 <div className="col-2">{proc.pid}</div>
-                <div className="col-2">{proc.proceso}</div>
-                <div className="col-3">{proc.uid}</div>
+                <div className="col-2">{proc.uid}</div>
+                <div className="col-3">{proc.estado}</div>
             </div>
 
         );
