@@ -8,12 +8,11 @@
 ## INDICE
 1. Introducción
 2. Objetivos
-3. Alcances del proyecto
-4. Requerimientos técnicos
-5. Diagramas sistema
-6. Aspectos técnicos
-7. Endpoints
-8. Glosario
+4. Diagramas sistema
+5. Aspectos técnicos
+6. Endpoints
+7. RUTAS
+8. Documentación de apoyo
 
 ## INTRODUCCIÓN
 El presente documento detalla los elementos basicos de proyecto de suficiencia, el cual fue desarrollado por el alumno Diego Berrios - 201503609 del curso de sistemas operativos 1. Documentado de la mejor manera posible
@@ -21,28 +20,31 @@ El presente documento detalla los elementos basicos de proyecto de suficiencia, 
 
 ## OBJETIVOS
 ### GENERAL
-* 
+* Hacer uso adecuado de las tecnologias de la nube para el entendimiento del funcionamiento de servicios de mensajeria, kernel, Virtualización y servicios serverless.
 ## ESPECIFICOS
-* 
-* 
-
-## ALCANCE DEL PROYECTO
-* 
-
-## REQUERIMIENTOS TECNICOS
-* 
+* Comprender la teoría de la concurrencia y el paralelismo para desarrollar sistemas distribuidos.
+* Experimentar y probar con las tecnologías Cloud Native útiles para desarrollar sistemas distribuidos modernos.
+* Diseñar estrategias de sistemas distribuidos para mejorar la respuesta de alta concurrencia.
+* Monitorear procesos distribuidos utilizando tecnologías asociadas a la observabilidad y la telemetría.
+* Implementar contenedores y orquestadores en sistemas distribuidos.
+* Medir la fidelidad y el desempeño en sistemas con alta disponibilidad.
+* Implementar la Chaos Engineering
 
 ## DIAGRAMAS
 
 ## ASPECTOS TECNICOS 
 
-
+CONEXIONES
 ```python
+   Conexión a MongoDB: mongodb://rootdev:rootdev@34.67.40.100:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
 
 ```
 
-Conexión a MongoDB: mongodb://rootdev:rootdev@34.67.40.100:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
-
+Levantas App con Run Function
+```Docker
+   docker build -t gcr.io/fine-byway-320501/react-app:latest .
+   docker push gcr.io/fine-byway-320501/react-app:latest
+```
 
 Comando para levantar el contenido de los archivos docker-compose.yml:
 ```yml
@@ -190,4 +192,16 @@ Correr comandos docker sin necesidad de SUDO
    - DB: redis
 ```
 
-   ## GLOSARIO
+## RUTAS
+- APP: https://react-app-th2kecxw4q-uc.a.run.app/
+- HUB: https://hub.docker.com/repositories
+- REPO: https://github.com/201503609/suficiencia
+
+## DOCUMENTACIÓN DE APOYO
+- https://drive.google.com/drive/folders/1LH3yJ9aoRqsDGO_8nwIQhHxakR6mzFI9
+- https://stackoverflow.com/questions/56531880/how-does-the-kernel-use-task-struct#:~:text=Yes%2C%20the%20task_struct%20structure%20contains%20all%20the%20information,you%20can%20use%20the%20find_task_by_vpid%20function%20as%20follows%3A
+- https://www.informit.com/articles/article.aspx?p=368650
+- http://manpages.ubuntu.com/manpages/bionic/es/man1/top.1.html
+- https://stackoverflow.com/questions/65536875/linkerd-traffic-split-with-nginx-ingress-controller
+- https://stackshare.io/stackups/grpc-vs-kafka
+- https://chaos-mesh.org/docs/next/chaos_experiments/podchaos_experiment/
