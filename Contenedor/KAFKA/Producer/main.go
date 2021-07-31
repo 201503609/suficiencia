@@ -44,7 +44,7 @@ func ConnectProducer(brokersUrl []string) (sarama.SyncProducer, error) {
 
 func PushCommentToQueue(topic string, message []byte) error {
 
-	brokersUrl := []string{"34.72.30.94:9092"}
+	brokersUrl := []string{"localhost:9092"}
 	producer, err := ConnectProducer(brokersUrl)
 	if err != nil {
 		return err
@@ -80,7 +80,7 @@ func createComment(c *fiber.Ctx) error {
 	}
 	// convert body into bytes and send it to kafka
 	cmtInBytes, err := json.Marshal(cmt)
-	PushCommentToQueue("sopes1-oso", cmtInBytes)
+	PushCommentToQueue("sopes1", cmtInBytes)
 	// Return Comment in JSON format
 	err = c.JSON(&fiber.Map{
 		"Caso": cmt,

@@ -30,8 +30,8 @@ func main() {
 }
 
 func connect_with_grpc_server(data string) {
-	//address := fmt.Sprintf("%s:8081", os.Getenv("GRPC_SERVER_ADDRESS"))
-	address := fmt.Sprintf("%s:8081", "grpc-server")
+	address := fmt.Sprintf("%s:8081", os.Getenv("GRPC_SERVER_ADDRESS"))
+	//address := fmt.Sprintf("%s:8081", "grpc-server")
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {

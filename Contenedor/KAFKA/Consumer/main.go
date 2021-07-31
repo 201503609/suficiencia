@@ -26,8 +26,8 @@ func main() {
 
 	fmt.Println("Consumer started....")
 
-	topic := "sopes1-oso"
-	worker, err := connectConsumer([]string{"34.72.30.94:9092"})
+	topic := "sopes1"
+	worker, err := connectConsumer([]string{"localhost:9092"})
 	if err != nil {
 		panic(err)
 	}
@@ -62,6 +62,18 @@ func main() {
 					fmt.Println("Error...")
 					fmt.Println(err)
 				}
+				
+				postBody := []byte(string(info))
+				req, err := http.Post("http://34.67.40.100:3000/vaccinated/newVaccinated", "application/json", bytes.NewBuffer(postBody))
+				req.Header.Set("Content-Type", "application/json")
+				failOnError(err, "POST new document")
+				defer req.Body.Close()
+
+				//Read the response body
+				newBody, err := ioutil.ReadAll(req.Body)
+				failOnError(err, "Reading response from HTTP POST")
+				sb := string(newBody)
+				log.Printf(sb)
 
 				fmt.Println("Info")
 				fmt.Println(info)
