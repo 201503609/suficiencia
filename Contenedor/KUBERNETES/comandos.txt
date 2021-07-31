@@ -1,0 +1,55 @@
+kubectl create namespace project
+kubectl create namespace ingress-nginx
+
+kubectl config set-context --current --namespace=ingress-nginx
+kubectl config set-context --current --namespace=project
+kubectl config set-context --current --namespace=linkerd
+kubectl config set-context --current --namespace=linkerd-viz
+kubectl config set-context --current --namespace=chaos-testing
+
+kubectl get service -n linkerd
+kubectl get service -n linkerd-viz
+
+kubectl get service -n chaos-testing
+
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+
+helm install ingress-nginx ingress-nginx/ingress-nginx
+
+kubectl apply -f 
+
+kubectl get deploy -A
+kubectl delete deploy kafka-producer-deployment -n project
+kubectl delete deploy kafka-consumer-deployment -n project
+kubectl get service -n project
+kubectl delete svc kafka-consumer-service -n project
+kubectl delete svc kafka-producer-service -n project
+
+
+kubectl apply -f kafka-consumer-deployment.yaml
+kubectl get deploy
+kubectl apply -f kafka-consumer-service.yaml
+kubectl get service -n project
+kubectl apply -f kafka-producer-deployment.yaml
+kubectl get deploy
+kubectl apply -f kafka-producer-service.yaml
+kubectl get service -n project
+
+
+//CORRER LINKERD
+export PATH=$PATH:/home/berriosdiego15/.linkerd2/bin
+linkerd viz dashboard
+
+
+
+// CORRER CHAOS MESH
+
+kubectl delete -f pod_kill.yaml
+kubectl delete -f container-kill.yaml
+kubectl delete -f pod_failure.yaml
+
+kubectl apply -f pod_kill.yaml
+kubectl get pods -n project
+kubectl apply -f container-kill.yaml
+kubectl apply -f pod_failure.yaml

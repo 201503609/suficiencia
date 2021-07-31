@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-producer-service
+  namespace: project
+data:
+ nginx.conf: |-
+    events {}
+    http {
+        server {
+          listen 80;
+            location / {
+                return 200 "V1\n";
+            }
+        }
+    }

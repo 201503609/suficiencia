@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-producer-deployment
+  namespace: project
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: kafka-producer
+  template:
+    metadata:
+      labels:
+        app: kafka-producer
+    spec:
+      containers:
+        - name: kafka-producer
+          image: dberrio/grpc-client:latest
+          env:
+            - name: GRPC_SERVER_ADDRESS
+              value: "kafka-consumer-service.project"

@@ -1,0 +1,3 @@
+kubectl delete -f container-kill.yaml
+kubectl delete -f pod_failure.yaml
+kubectl delete -f pod_kill.yaml

@@ -100,7 +100,7 @@ class MessageTraffic(HttpUser):
             printDebug (data_to_send)
 
             # Enviar los datos que acabamos de obtener
-            self.client.post("/newVaccinated", json=random_data)
+            self.client.post("/", json=random_data)
 
         # En este segmento paramos la ejecución del proceso de creación de tráfico
         else:

@@ -1,0 +1,12 @@
+apiVersion: split.smi-spec.io/v1alpha1
+kind: TrafficSplit
+metadata:
+  name: test-traffic
+  namespace: project
+spec:
+  service: test-traffic
+  backends:
+  - service: grpc-client-service
+    weight: 500m
+  - service: kafka-consumer-service
+    weight: 500m

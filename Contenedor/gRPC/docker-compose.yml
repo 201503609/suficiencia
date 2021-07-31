@@ -1,0 +1,13 @@
+version: "3.3"
+services:
+  grpc-client:
+      build: ./gRPC Client
+      ports:
+        - "80:80"
+      depends_on:
+      - grpc-server
+
+  grpc-server:
+      build: ./gRPC Server
+      ports:
+        - "8081:8081"

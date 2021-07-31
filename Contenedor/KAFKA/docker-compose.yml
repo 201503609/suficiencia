@@ -1,0 +1,12 @@
+version: "3.3"
+services:
+  kafka-consumer:
+    build: ./Consumer
+    ports:
+      - "9092:9092"
+    depends_on:
+        - kafka-producer
+  kafka-producer:
+    build: ./Producer
+    ports:
+      - "80:80"
