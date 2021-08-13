@@ -12,7 +12,7 @@ struct sysinfo i; //stuct que contiene la informacion de la ram
 static int mostrarDatos(struct seq_file *f, void *v)
 {
     si_meminfo(&i);
-    seq_printf(f, "%ld;%ld", (i.totalram), (i.freeram));
+    seq_printf(f, "Total:%ld;Libre:%ld;Uso:%ld", (i.totalram), (i.freeram), (i.totalram - i.freeram));
     return 0;
 }
 
