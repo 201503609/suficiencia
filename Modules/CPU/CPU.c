@@ -165,11 +165,13 @@ static const struct file_operations proc_stat_operations = {
 
 static int __init proc_stat_init(void)
 {
+	printk(KERN_INFO "Hola mundo, somos el grupo 18\n");
 	proc_create("CPU_201503609", 0, NULL, &proc_stat_operations);
 	return 0;
 }
 static void __exit cleanFuncion(void)
 {
+	printk(KERN_INFO "Adios mundo, somos el grupo 18\n");
 	remove_proc_entry("CPU_201503609", NULL);
 }
 
