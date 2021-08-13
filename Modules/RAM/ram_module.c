@@ -31,14 +31,14 @@ static const struct file_operations informacion = {
 
 static int __init initFuncion(void)
 {
-    printk(KERN_INFO "Hola mundo, este es el monitor de memoria");
+    printk(KERN_INFO "Hola mundo, somos el grupo 18\n");
     proc_create(nombreArchivo, 0, NULL, &informacion);
     return 0;
 }
 
 static void __exit cleanFuncion(void)
 {
-    printk(KERN_INFO "Sayonara mundo, este fue el monitor de memoria");
+    printk(KERN_INFO "Adios mundo, somos el grupo 18\n");
     remove_proc_entry(nombreArchivo, NULL);
 }
 
